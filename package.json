@@ -1,0 +1,30 @@
+{
+  "name": "@luisiseverywhere/dependency-injection",
+  "version": "1.1.0",
+  "description": "A base framework using inversion of control pattern that allows easy implementation of a dependency injection framework in any app  ",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "scripts": {
+    "copy:assets": "cp package.json README.md ./build",
+    "build": "rm -rf ./build && tsc && npm run copy:assets",
+    "npm:build:publish": "npm run build && cd ./build && npm publish --access public",
+    "link": "cd ./build && npm link",
+    "build:link": "npm run build && npm run link"
+  },
+  "keywords": [
+    "inversion-of-control",
+    "dependency-injection",
+    "DI",
+    "DI-framework",
+    "IoC"
+  ],
+  "author": "Luis Teixeira",
+  "license": "ISC",
+  "dependencies": {
+    "@types/events": "^3.0.0",
+    "@types/node": "^14.0.27",
+    "events": "^3.2.0",
+    "fs": "0.0.1-security",
+    "glob": "^7.1.6"
+  }
+}

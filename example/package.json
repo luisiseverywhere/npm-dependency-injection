@@ -1,0 +1,17 @@
+{
+  "name": "npm-test-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/main.js",
+  "scripts": {
+    "copy:assets": "cp -r ./src/config ./build && cp package.json ./build",
+    "build": "rm -rf build && tsc && npm run copy:assets",
+    "start": "cd ./build && node main.js",
+    "build:start": "npm run build && npm run start"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@luisiseverywhere/dependency-injection": "^1.1.0"
+  }
+}
