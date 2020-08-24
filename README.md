@@ -132,6 +132,7 @@ your-program.ts will be a your own app implementation, making use of DI framewor
 A new service class was created, called settings-file-service, and placed inside plugins folder. It will be automatically registered in DI framework and available when AfterLoad event has been called:
 
     import { DepencyInjectionFramework } from "@luisiseverywhere/dependency-injection";
+    import { ServiceProviderManager } from '@luisiseverywhere/dependency-injection/services';
     import { EventName } from "@luisiseverywhere/dependency-injection/models";
     import { exit } from "process";
     import { YourProgram } from "./your-program";
@@ -147,7 +148,7 @@ A new service class was created, called settings-file-service, and placed inside
         .on(EventName.BeforeLoad, ()  => {    
             console.log("\n** before load **");
         })
-        .on(EventName.AfterLoad, (serviceManager: ServiceManagerProvider) => {
+        .on(EventName.AfterLoad, (serviceManager: ServiceProviderManager) => {
             console.log("\n ** after load **");
             //
             // Execute your code in another class and access services using service manager
