@@ -1,14 +1,8 @@
 import { ServiceProvider } from "../core/service-provider";
-import { ServiceProviderManager } from "../core/service-provider-manager";
 import { FileSystemService } from "./file-system-service";
 
 
 export abstract class AbstractJsonFileReadWriteService extends ServiceProvider {
-    
-    constructor(serviceManager: ServiceProviderManager) {
-        super(serviceManager);
-        this.serviceManager = serviceManager;
-    }
 
     /**
      * Path of the file to be read

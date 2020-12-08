@@ -8,7 +8,6 @@ export class ServiceProviderManager {
     private services: ServiceRegistration[] = [];
 
     constructor() {
-
     }
 
     /**
@@ -18,6 +17,7 @@ export class ServiceProviderManager {
      */
     register(service: ServiceProvider) {
         service.provides().forEach(name => {
+            service.setServices(this);
             this.services.push({
                 name: name,
                 provider: service

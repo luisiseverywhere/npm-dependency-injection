@@ -1,5 +1,4 @@
 import { ServiceProvider } from "../core/service-provider";
-import { ServiceProviderManager } from "../core/service-provider-manager";
 import { LogService } from "../log/log-service";
 
 const fs = require('fs');
@@ -7,11 +6,6 @@ const getFolderName = require('path').dirname;
 const glob = require('glob');  
 
 export class FileSystemService extends ServiceProvider {
-    
-    constructor(serviceManager: ServiceProviderManager) {
-        super(serviceManager);
-    }
-
     /**
      * List all file names in specific directory
      * @param folderName 

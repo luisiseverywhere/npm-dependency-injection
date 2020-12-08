@@ -12,6 +12,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@luisiseverywhere/dependency-injection": "^1.1.0"
+    "@luisiseverywhere/dependency-injection": "^2.0.2"
   }
 }

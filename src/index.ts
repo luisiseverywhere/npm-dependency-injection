@@ -27,10 +27,10 @@ export class DepencyInjectionFramework extends EventEmitter {
      */
     public start(options: DependencyInjectionOptions = {debugOn: true, loadPluginsFrom: []}) {
         this.on(EventName.BeforeLoad, async () => {
-            const logger = new LogService(this._serviceManager);
+            const logger = new LogService();
             logger.setEnabled(options.debugOn);
             this._serviceManager.register(logger);
-            this._serviceManager.register(new FileSystemService(this._serviceManager));
+            this._serviceManager.register(new FileSystemService());
             await this.load(options.loadPluginsFrom);
         })
         this.emit(EventName.BeforeLoad);

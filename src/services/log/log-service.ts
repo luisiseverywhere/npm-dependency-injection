@@ -1,14 +1,8 @@
-import { ServiceProvider } from "../core/service-provider"
-import { ServiceProviderManager } from "../core/service-provider-manager";
 import { AbstractLogService } from "./abstract-log-service";
 
 export class LogService extends AbstractLogService {
     
     private _isLogEnabled: boolean = true;
-
-    constructor(serviceManager: ServiceProviderManager) {
-        super(serviceManager);
-    }
 
     isEnabled(): boolean {
         return this._isLogEnabled;

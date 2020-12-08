@@ -30,7 +30,7 @@ ServiceProvider class is the base class for any service implementation.
 It inherits from nodejs EventEmitter class, allowing subclass implementations to emit events specific to an implementation.
 
     export abstract class ServiceProvider extends EventEmitter {
-        constructor(serviceManager: ServiceProviderManager);
+        constructor();
         provides(): string[];
     }
 
@@ -49,10 +49,6 @@ First step is to create your service(s) class which must derive from ServiceProv
     import { ServiceProviderManager } from "@luisiseverywhere/dependency-injection/services";
 
     export class YourNewService extends ServiceProvider {
-        constructor(serviceManager: ServiceProviderManager) {
-            super(serviceManager);
-        }
-        
         doSomething(): void {
             
         }

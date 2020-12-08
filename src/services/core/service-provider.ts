@@ -8,9 +8,14 @@ export abstract class ServiceProvider extends EventEmitter {
 
     protected serviceManager: ServiceProviderManager;
 
-    constructor(serviceManager: ServiceProviderManager) {
+    constructor() {
         super();
-        this.serviceManager = serviceManager;
+    }
+
+    setServices(serviceManager: ServiceProviderManager) {
+        if (serviceManager) {
+            this.serviceManager = serviceManager;
+        }
     }
 
     /**
