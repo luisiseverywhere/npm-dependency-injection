@@ -1,6 +1,6 @@
 {
   "name": "@luisiseverywhere/dependency-injection",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "A base framework using inversion of control pattern that allows easy implementation of a dependency injection framework in any app.",
   "main": "build/index.js",
   "types": "build/index.d.ts",

@@ -1,4 +1,5 @@
 # npm package: @luisiseverywhere/dependency-injection
+![Node.js CI](https://github.com/luisiseverywhere/npm-dependency-injection/workflows/Node.js%20CI/badge.svg?branch=master)
 
 Simple implementation of Inversion of Control (IoC) pattern: Inject service providers into custom built-in DI (Dependency injection) service framework, and instances will be called when we need a specific service to be provided during runtime.
 
