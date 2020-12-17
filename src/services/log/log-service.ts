@@ -1,8 +1,13 @@
 import { AbstractLogService } from "./abstract-log-service";
 
 export class LogService extends AbstractLogService {
-    
+    private _nameOfClassWhereLogExecuted: string;
     private _isLogEnabled: boolean = true;
+
+    constructor(nameOfClassWhereLogExecuted: string = '') {
+        super();
+        this._nameOfClassWhereLogExecuted = nameOfClassWhereLogExecuted;
+    }
 
     isEnabled(): boolean {
         return this._isLogEnabled;
@@ -14,8 +19,11 @@ export class LogService extends AbstractLogService {
 
     log(args: any): void {
         if (this._isLogEnabled) {
-            const header = `${new Date().toLocaleString()} | ${__filename.replace(__dirname, "")} | `;
-            console.info(header, args);
+            let header = `${new Date().toLocaleString()} | `;
+            if (!!this._nameOfClassWhereLogExecuted) {
+                header += `${this._nameOfClassWhereLogExecuted} | `
+            }
+            console.log(header, args);
         }
     }
 }

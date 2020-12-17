@@ -1,4 +1,4 @@
-import { AbstractJsonFileReadWriteService, ServiceProviderManager } from "@luisiseverywhere/dependency-injection/services";
+import { AbstractJsonFileReadWriteService } from "@luisiseverywhere/dependency-injection/services";
 
 const SETTINGS_FILE = "./config/settings.json";
 
