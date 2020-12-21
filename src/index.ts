@@ -4,8 +4,6 @@ import { FileSystemService } from "./services/file/file-system-service";
 import { ServiceProvider } from "./services/core/service-provider";
 import { DependencyInjectionOptions } from "./models/di-options-model";
 import { EventName } from "./models/di-events-model";
-import { LogService } from "./services/log/log-service";
-
 export class DepencyInjectionFramework extends EventEmitter {
 
     private _serviceManager: ServiceProviderManager = new ServiceProviderManager();
@@ -27,9 +25,6 @@ export class DepencyInjectionFramework extends EventEmitter {
      */
     public start(options: DependencyInjectionOptions = {debugOn: true, loadPluginsFrom: []}) {
         this.on(EventName.BeforeLoad, async () => {
-            const logger = new LogService();
-            logger.setEnabled(options.debugOn);
-            this._serviceManager.register(logger);
             this._serviceManager.register(new FileSystemService());
             await this.load(options.loadPluginsFrom);
         })
@@ -53,12 +48,12 @@ export class DepencyInjectionFramework extends EventEmitter {
             await Promise.all(promises);
             
             this.emit(EventName.AfterLoad, this._serviceManager);
-            this._serviceManager.resolve<LogService>(LogService).log(
+            console.log(
                 `Registered services:\n${JSON.stringify(this._serviceManager.serviceNames(), null, 2)}`
             );
 
         } catch (error) {
-            this._serviceManager.resolve<LogService>(LogService).log(`Failed to start DI framework:\n${error}`);
+            console.log(`Failed to start DI framework:\n${error}`);
             this.emit(EventName.LoadError, error);
         }
     }
@@ -81,14 +76,14 @@ export class DepencyInjectionFramework extends EventEmitter {
                             !fileName.includes('file-system')
                 })
                 .forEach(async path => {
-                    this._serviceManager.resolve<LogService>(LogService).log(`importing module ${path} ...`);
+                    console.log(`importing module ${path} ...`);
                     const nodeModule = await import(path);
                     const className = Object.keys(nodeModule)[0];
                     try {
                         const provider: ServiceProvider = new nodeModule[className](serviceManager);
                         serviceManager.register(provider);  
                     } catch (error) {
-                        this._serviceManager.resolve<LogService>(LogService).log(`Could not register provider ${className}:\n${error}`);
+                        console.log(`Could not register provider ${className}:\n${error}`);
                     }
                 });
     

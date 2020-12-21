@@ -1,5 +1,4 @@
 import { ServiceProvider } from "../core/service-provider";
-import { LogService } from "../log/log-service";
 
 const fs = require('fs');
 const getFolderName = require('path').dirname;
@@ -13,7 +12,7 @@ export class FileSystemService extends ServiceProvider {
     async list(folderName: string, fileType: string = ".js"): Promise<string[]> {
         return new Promise((resolve, reject) => {
             glob(`${folderName}/**/*${fileType}`, (error, files ) => {
-                this.serviceManager.resolve<LogService>(LogService).log(`files loaded:\n${files}`);
+                console.log(`files loaded:\n${files}`);
                 error ? reject(error) : resolve(files);
             });
         });

@@ -95,11 +95,6 @@ Use enum EventName to define the event listener.
 ## Default Services Availble
 There are some default pre-installed services that are also available during runtime:
 
-Logging service, enhances console.log() with a date and file name print. Aslo allows to enable/disable logging during runtime:
-
-    const logger = di.serviceProviderManager().resolve<LogService>(LogService);
-    logger.setEnabled(true);
-
 File system service, allowing to read/write text to file, check if file exists and list the files within a folder recursively:
     
     const file = di.serviceProviderManager().resolve<FileSystemService>(FileSystemService);
